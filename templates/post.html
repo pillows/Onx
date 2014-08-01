@@ -1,21 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
+
+        
+
 <p>Warning! This is a cat-only authorization system. Do not use if you are human, dog, panda bear, or other creature.</p>
 <p><strong>Note: no more valid codes exist to claim spots, sorry. Congrats for making it this far though!</strong></p>
+
+
+  
+
+
+
         <h3>Proceed with your credentials:</h3>
         <form method="post">
         <div style="display:none;"><input id="csrf_token" name="csrf_token" type="hidden" value="1406624085.76##8176c29237e2b1fe2e637f771aab0457af0943fd"></div>
         <div class="row">
             <div class="col-sm-5">
-                <i class="fa fa-heart"></i>
-                <input placeholder="Onx ID" type="text" name="login" class="form-control" required="true" id="login">
-                <br>
-                <i class="fa fa-key"></i>
-                <input placeholder="Password" type="password" name="password" class="form-control" required="true" id="password">
+                <textarea class="form-control" id="textarea" name="textarea" style="height:200px;width:500px;" disabled="">default text</textarea>
             </div>
-            <div class="col-sm-3">
-                <button type="submit" class="form-control btn btn-success">Login</button>
-            </div>
+
+            
         </div>
         </form>
 

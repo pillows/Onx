@@ -1,7 +1,8 @@
 from flask import Flask, session, redirect
 from index import index
 from login import login
-#from register import register
+from register import register
+from post import post
 import config
 
 app = Flask(__name__)
@@ -11,7 +12,8 @@ port = 5000
 
 app.register_blueprint(index)
 app.register_blueprint(login)
-#app.register_blueprint(register)
+app.register_blueprint(post)
+app.register_blueprint(register)
 
 @app.route("/logout/")
 def logout():

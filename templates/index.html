@@ -1,23 +1,52 @@
 {% extends "base.html" %}
 {% block content %}
 
-        
-
-<p>Warning! This is a cat-only authorization system. Do not use if you are human, dog, panda bear, or other creature.</p>
-<p><strong>Note: no more valid codes exist to claim spots, sorry. Congrats for making it this far though!</strong></p>
-
-
+       
   
 
 
 
-        <h3>Proceed with your credentials:</h3>
+        <h3>Paste your text/code here:</h3>
         <form method="post">
         <div style="display:none;"><input id="csrf_token" name="csrf_token" type="hidden" value="1406624085.76##8176c29237e2b1fe2e637f771aab0457af0943fd"></div>
         <div class="row">
             <div class="col-sm-5">
                 <textarea class="form-control" id="textarea" name="textarea" style="height:200px;width:500px;">default text</textarea>
+				
+				<div class="input-group">
+					<span class="input-group-addon">
+						<input type="checkbox" />
+					</span>
+					<input type="text" class="form-control" placeholder="Encryption Password. If left blank, we'll generate one for you."/>
+				</div><!-- /input-group -->
+				
+				<br />
+				<div class="input-group">
+					<span class="input-group-addon">
+						<input type="checkbox" />
+					</span>
+					<input type="text" class="form-control" readonly disabled placeholder="One view only?" style="background-color:#FFFFFF"/>
+				</div><!-- /input-group -->
+				<br />
+				
+				<div class="dropdown">
+				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+					Expiration?
+					<span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">10 Minutes</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Hour</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Day</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Week</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Month</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Never</a></li>
+				  </ul>
+				</div>
+				<br />
 				<button type="submit" class="form-control btn btn-success">Submit</button>
+				
+				
             </div>
 
             
