@@ -1,5 +1,5 @@
 from flask import Flask, session, redirect
-#from index import index
+from index import index
 from login import login
 #from register import register
 import config
@@ -9,7 +9,7 @@ app.secret_key = "ASD'l1l;23k123kk;laskd;askd;lakSD;;alsmmzxcmmadf;kas;DK;lkl;1;
 app.debug = True
 port = 5000
 
-#app.register_blueprint(index)
+app.register_blueprint(index)
 app.register_blueprint(login)
 #app.register_blueprint(register)
 
