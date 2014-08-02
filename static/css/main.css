@@ -50,3 +50,6 @@ h5 {
 	font-size: 24px;
 	margin-top: 40px;
 }
+.table th, .table td { 
+     border-top: none; 
+ }
