@@ -8,8 +8,12 @@ index=Blueprint("index",__name__)
 def index_():
     page="index"
     if request.method == "POST":
-        paste = request.form['paste']
-        id_ = uuid.uuid4().hex
-        config.db.pastes.insert({"paste":paste, "id":id_})
-        return redirect("/paste/{0}".format(id_))
+		title = request.form['title']
+		paste = request.form['paste']
+		expiration = request.form['expiration']
+		encryption = request.form['encryption']
+		oneview = request.form['oneview']
+		id_ = uuid.uuid4().hex
+		config.db.pastes.insert({"paste":paste, "id":id_})
+		return redirect("/paste/{0}".format(id_))
     return render_template("index.html",page=page)

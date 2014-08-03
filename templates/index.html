@@ -13,6 +13,7 @@
 			
             <div class="col-sm-6">
 				<h3>Paste your text/code here:</h3>
+				<input type="text" class="form-control" name="title" placeholder="TItle goes here. If left blank, it will be named &quot;Untitlted&quot;" />
                 <textarea class="form-control" id="textarea" name="paste" style="height:200px;width:550px;resize:none;" placeholder="Default text"></textarea>
 				
 				<div class="input-group">
@@ -31,19 +32,15 @@
 				</div><!-- /input-group -->
 				<br />
 				
-				<div class="dropdown">
-				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-					Expiration?
-					<span class="caret"></span>
-				  </button>
-				  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">10 Minutes</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Hour</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Day</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Week</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 Month</a></li>
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Never</a></li>
-				  </ul>
+				<div class="input-group">Expiration: 
+					<select class="form-control" name="expiration">
+						<option value="10min">10 Minutes</option>
+						<option value="1h">1 Hour</option>
+						<option value="1d">1 Day</option>
+						<option value="1w">1 Week</option>
+						<option value="1m">1 Month</option>
+						<option value="forever">Forever</option>
+					</select>
 				</div>
 				<br />
 				<button type="submit" class="form-control btn btn-success btn-block" style="width:50%;">Submit</button>
