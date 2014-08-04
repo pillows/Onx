@@ -9,6 +9,6 @@ def post_(uid):
     data = config.db.pastes.find_one({"id":uid})
     if data['encrypted']:
         return redirect("/encrypted/{0}".format(uid))
-    elif data['onetime']:
+    elif data['oneview']:
         config.db.pastes.remove({"id":uid})
     return render_template("post.html",page=page, data=data)
