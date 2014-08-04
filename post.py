@@ -7,6 +7,8 @@ post=Blueprint("post",__name__)
 def post_(uid):
     page="paste"
     data = config.db.pastes.find_one({"id":uid})
+    if not data:
+        return redirect("/")
     if data['encrypted']:
         return redirect("/encrypted/{0}".format(uid))
     elif data['oneview']:
