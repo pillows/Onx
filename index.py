@@ -9,13 +9,15 @@ index=Blueprint("index",__name__)
 
 @index.route("/",methods=['GET', 'POST'])
 def index_():
-    page="index"
+    site=config.site
+    page="Index"
     if request.method == "POST":
 		title = request.form['title']
 		paste = request.form['paste']
 		expiration = request.form['expiration']
 		encryption = request.form['encryption']
-		oneview = request.form['oneview']
+		oneview = request.form.get("oneview")
+		print oneview
 		id_ = uuid.uuid4().hex
                 if encryption:
                     encrypted = True
@@ -30,4 +32,4 @@ def index_():
 
                 config.db.pastes.insert({"paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview})
 		return redirect("/paste/{0}".format(id_))
-    return render_template("index.html",page=page)
+    return render_template("index.html",page=page, site=site)

@@ -8,4 +8,4 @@ def protect(string):
     return string
 
 db = pymongo.MongoClient("localhost", 27017).onx
-site="Catbin"
+site="Onx"
