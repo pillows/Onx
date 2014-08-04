@@ -1,6 +1,9 @@
 from flask import url_for, Blueprint, render_template, redirect, session, flash, request
+import base64
 import config
 import uuid
+import aes
+import hashlib
 
 index=Blueprint("index",__name__)
 
@@ -14,6 +17,17 @@ def index_():
 		encryption = request.form['encryption']
 		oneview = request.form['oneview']
 		id_ = uuid.uuid4().hex
-		config.db.pastes.insert({"paste":paste, "id":id_})
+                if encryption:
+                    encrypted = True
+                    encryption = hashlib.md5(encryption).hexdigest()
+                    paste = base64.b64encode(aes.encryptData(encryption, paste))
+                else:
+                    encrypted = False
+                if oneview:
+                    oneview = True
+                else:
+                    oneview = False
+
+                config.db.pastes.insert({"paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview})
 		return redirect("/paste/{0}".format(id_))
     return render_template("index.html",page=page)

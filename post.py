@@ -7,4 +7,8 @@ post=Blueprint("post",__name__)
 def post_(uid):
     page="paste"
     data = config.db.pastes.find_one({"id":uid})
+    if data['encrypted']:
+        return redirect("/encrypted/{0}".format(uid))
+    elif data['onetime']:
+        config.db.pastes.remove({"id":uid})
     return render_template("post.html",page=page, data=data)

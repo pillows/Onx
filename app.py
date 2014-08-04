@@ -3,6 +3,7 @@ from index import index
 from login import login
 from register import register
 from post import post
+from encrypted_paste import encrypted
 import config
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ app.register_blueprint(index)
 app.register_blueprint(login)
 app.register_blueprint(post)
 app.register_blueprint(register)
+app.register_blueprint(encrypted)
 
 @app.route("/logout/")
 def logout():
