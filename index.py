@@ -18,7 +18,8 @@ def index_():
 		encryption = request.form['encryption']
 		oneview = request.form.get("oneview")
 		language = request.form['lang']
-		print oneview
+		print language
+		#print oneview
 		id_ = uuid.uuid4().hex
                 if encryption:
                     encrypted = True
