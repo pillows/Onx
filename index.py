@@ -17,6 +17,7 @@ def index_():
 		expiration = request.form['expiration']
 		encryption = request.form['encryption']
 		oneview = request.form.get("oneview")
+		language = request.form['lang']
 		print oneview
 		id_ = uuid.uuid4().hex
                 if encryption:
@@ -30,6 +31,6 @@ def index_():
                 else:
                     oneview = False
 
-                config.db.pastes.insert({"paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview})
+                config.db.pastes.insert({"paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview, "lang":language})
 		return redirect("/paste/{0}".format(id_))
     return render_template("index.html",page=page, site=site)

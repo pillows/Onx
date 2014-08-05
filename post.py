@@ -1,4 +1,7 @@
-from flask import url_for, Blueprint, render_template, redirect, session, flash, request
+from flask import url_for, Blueprint, render_template, redirect, session, flash, request, Markup
+from pygments import highlight, util
+from pygments.lexers import get_lexer_by_name, TextLexer
+from pygments.formatters import HtmlFormatter
 import config
 post=Blueprint("post",__name__)
 
@@ -8,6 +11,8 @@ def post_(uid):
     site=config.site
     page="Paste"
     data = config.db.pastes.find_one({"id":uid})
+	
+    data['paste']=Markup(highlight(data['paste'], get_lexer_by_name(data['lang']), HtmlFormatter(linenos=True)))
     if not data:
         return redirect("/")
     if data['encrypted']:
