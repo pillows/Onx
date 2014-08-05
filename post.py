@@ -11,8 +11,8 @@ def post_(uid):
     site=config.site
     page="Paste"
     data = config.db.pastes.find_one({"id":uid})
-	
-    data['paste']=Markup(highlight(data['paste'], get_lexer_by_name('php'), HtmlFormatter(linenos=True)))
+    print data['lang']
+    data['paste']=Markup(highlight(data['paste'], get_lexer_by_name(data['lang']), HtmlFormatter(linenos=True)))
     if not data:
         return redirect("/")
     if data['encrypted']:

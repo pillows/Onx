@@ -5,6 +5,7 @@ from register import register
 from post import post
 from encrypted_paste import encrypted
 import config
+import pyg
 
 app = Flask(__name__)
 app.secret_key = "ASD'l1l;23k123kk;laskd;askd;lakSD;;alsmmzxcmmadf;kas;DK;lkl;1;23k1;23k;SAd00123lal;sdk;SAKD;lk213123"
@@ -21,6 +22,7 @@ app.register_blueprint(encrypted)
 def logout():
     session.pop("login")
     return redirect("/")
+
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port=port)
