@@ -4,10 +4,37 @@
         <form method="post">
         <div style="display:none;"><input id="csrf_token" name="csrf_token" type="hidden" value="1406624085.76##8176c29237e2b1fe2e637f771aab0457af0943fd"></div>
         <div class="row">
-            <div class="col-sm-5">
-                <!--<textarea class="form-control" id="textarea" name="textarea" style="height:200px;width:500px;" disabled=""></textarea>-->
-				{{ data['paste'] }}
+            <div class="col-sm-8">		
+				
+				<pre id="ace_editor_demo">
+					{{ data['paste'] }}
+				</pre>
             </div>
+			
+			<div class="col-sm-3">
+				<table class="table-borderless table-condensed table-hover">
+					<tr>
+						<td><span class="label label-default">text</span></td>
+						<td>CC Dump Lulz</td>
+					</tr>
+					<tr>
+						<td><span class="label label-primary">ruby</span></td>
+						<td>RoR</td>
+					</tr>
+					<tr>
+						<td><span class="label label-success">boo</span></td>
+						<td>Never heard of this</td>
+					</tr>
+					<tr>
+						<td><span class="label label-danger">rusty</span></td>
+						<td>rusty code</td>
+					</tr>
+					<tr>
+						<td><span class="label label-info">c++</span></td>
+						<td>Random Exe dump</td>
+					</tr>
+				</table>
+			</div>
 
             
         </div>
@@ -18,4 +45,7 @@
         </div>
 
     </div>
+	<script type="text/javascript">
+
+	</script>
 {% endblock %}

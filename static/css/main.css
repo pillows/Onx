@@ -53,5 +53,33 @@ h5 {
 .table th, .table td { 
      border-top: none; 
  }
- 
- 
+
+#ace_editor_demo, #embedded_ace_code {
+    height: 500px;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    border-bottom-right-radius: 0px;
+    margin-top: 5px;
+	overflow:hidden;
+}
+
+.ace_content {
+	overflow:hidden;
+}
+
+/* Languages */
+.text { background-color:#474949; }
+.ruby { background-color:#d9230f; }
+.boo { background-color:#469408 }
+.rusty { background-color:#d9831f }
+.cpp { background-color: #029acf; }
+/*div.syntax {
+    overflow-x: auto;
+}
+
+.highlight {
+	width:500px;
+	overflow:auto;
+	white-space: pre-wrap;
+}
+*/

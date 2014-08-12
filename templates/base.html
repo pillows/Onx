@@ -15,7 +15,17 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.1.1/simplex/bootstrap.min.css">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/main.css')}}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/syntax.css')}}" rel="stylesheet">
+	<style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+	
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -45,7 +55,19 @@ Cat GIFs installed: 0x4841434b
 		{% block content %}
 		{% endblock %}
 		   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="{{ url_for('static', filename='ace/build/src/ace.js')}}"></script>
+		<script src="{{ url_for('static', filename='ace/build/src/ext-static_highlight.js')}}"></script>
+	
+	<script>
+		var editor = ace.edit("ace_editor_demo");
+		editor.setTheme("ace/theme/chrome");
+		editor.getSession().setMode("ace/mode/{{ data['lang'] }}");
+		editor.getSession().setUseWorker(false);
+		editor.setOptions({
+    maxLines: Infinity
+});
+	</script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 
