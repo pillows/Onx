@@ -16,7 +16,9 @@ def post_(uid):
 	
     if data['lang'] not in supported:
 		data['tag'] = "default"
-    #data['paste']=Markup(highlight(data['paste'],get_lexer_by_name(data['lang'], encoding='UTF-8'),HtmlFormatter(linenos='table',anchorlinenos=True,lineanchors='L',linespans='L')))
+	else:
+		data['tag'] = data['lang']
+    
     if not data:
 		return redirect("/")
     if data['encrypted']:
