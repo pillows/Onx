@@ -68,11 +68,15 @@ h5 {
 }
 
 /* Languages */
-.text { background-color:#474949; }
-.ruby { background-color:#d9230f; }
-.boo { background-color:#469408 }
-.rusty { background-color:#d9831f }
-.cpp { background-color: #029acf; }
+.text, .diff, .default { background-color:#474949; } /* Gray */
+.ruby, .erlang { background-color:#d9230f; } /* Red */
+.boo { background-color:#469408 } /* Green */
+.rust { background-color:#d9831f } /* Orange */
+.cpp, .php .lua, .c { background-color: #029acf; } /* Blue */
+.js  { background-color: #f1c40f; } /* Yellow */
+.bash { background-color: #000000; } /* Black */
+.go { background-color:#3498db; } /* Light Blue */
+
 /*div.syntax {
     overflow-x: auto;
 }

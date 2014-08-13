@@ -11,7 +11,11 @@ post=Blueprint("post",__name__)
 def post_(uid):
     site=config.site
     page="Paste"
+    supported=['php','text','boo','cpp','c','ruby','rust', 'diff', 'erlang', 'lua', 'js', 'bash', 'go']
     data = config.db.pastes.find_one({"id":uid})
+	
+    if data['lang'] not in supported:
+		data['tag'] = "default"
     #data['paste']=Markup(highlight(data['paste'],get_lexer_by_name(data['lang'], encoding='UTF-8'),HtmlFormatter(linenos='table',anchorlinenos=True,lineanchors='L',linespans='L')))
     if not data:
 		return redirect("/")

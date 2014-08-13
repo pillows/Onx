@@ -14,24 +14,8 @@
 			<div class="col-sm-3">
 				<table class="table-borderless table-condensed table-hover">
 					<tr>
-						<td><span class="label label-default">text</span></td>
+						<td><span class="label {{ data['tag'] }}">text</span></td>
 						<td>CC Dump Lulz</td>
-					</tr>
-					<tr>
-						<td><span class="label label-primary">ruby</span></td>
-						<td>RoR</td>
-					</tr>
-					<tr>
-						<td><span class="label label-success">boo</span></td>
-						<td>Never heard of this</td>
-					</tr>
-					<tr>
-						<td><span class="label label-danger">rusty</span></td>
-						<td>rusty code</td>
-					</tr>
-					<tr>
-						<td><span class="label label-info">c++</span></td>
-						<td>Random Exe dump</td>
 					</tr>
 				</table>
 			</div>
@@ -45,7 +29,16 @@
         </div>
 
     </div>
-	<script type="text/javascript">
-
+	<script src="{{ url_for('static', filename='ace/build/src/ace.js')}}"></script>
+		<script src="{{ url_for('static', filename='ace/build/src/ext-static_highlight.js')}}"></script>
+	
+	<script>
+		var editor = ace.edit("ace_editor_demo");
+		editor.setTheme("ace/theme/chrome");
+		editor.getSession().setMode("ace/mode/{{ data['lang'] }}");
+		editor.getSession().setUseWorker(false);
+		editor.setOptions({
+    maxLines: Infinity
+});
 	</script>
 {% endblock %}

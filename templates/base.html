@@ -56,18 +56,7 @@ Cat GIFs installed: 0x4841434b
 		{% endblock %}
 		   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="{{ url_for('static', filename='ace/build/src/ace.js')}}"></script>
-		<script src="{{ url_for('static', filename='ace/build/src/ext-static_highlight.js')}}"></script>
-	
-	<script>
-		var editor = ace.edit("ace_editor_demo");
-		editor.setTheme("ace/theme/chrome");
-		editor.getSession().setMode("ace/mode/{{ data['lang'] }}");
-		editor.getSession().setUseWorker(false);
-		editor.setOptions({
-    maxLines: Infinity
-});
-	</script>
+		
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 
