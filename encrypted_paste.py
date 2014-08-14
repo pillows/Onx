@@ -1,7 +1,4 @@
 from flask import url_for, Blueprint, render_template, redirect, session, flash, request, Markup
-from pygments import highlight, util
-from pygments.lexers import get_lexer_by_name, TextLexer
-from pygments.formatters import HtmlFormatter
 import config
 import aes
 import base64

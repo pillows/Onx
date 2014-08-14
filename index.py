@@ -32,6 +32,6 @@ def index_():
                 else:
                     oneview = False
 
-                config.db.pastes.insert({"paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview, "lang":language})
+                config.db.pastes.insert({"paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview, "lang":language, "tag":language})
 		return redirect("/paste/{0}".format(id_))
     return render_template("index.html",page=page, site=site)

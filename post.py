@@ -1,7 +1,4 @@
 from flask import url_for, Blueprint, render_template, redirect, session, flash, request, Markup
-from pygments import highlight, util
-from pygments.lexers import get_lexer_by_name, TextLexer
-from pygments.formatters import HtmlFormatter
 import config
 post=Blueprint("post",__name__)
 
@@ -13,11 +10,7 @@ def post_(uid):
     page="Paste"
     supported=['php','text','boo','cpp','c','ruby','rust', 'diff', 'erlang', 'lua', 'js', 'bash', 'go']
     data = config.db.pastes.find_one({"id":uid})
-	
-    if data['lang'] not in supported:
-		data['tag'] = "default"
-	else:
-		data['tag'] = data['lang']
+    latest = config.db.pastes.find().sort("_id",-1).limit(10)
     
     if not data:
 		return redirect("/")
@@ -25,4 +18,4 @@ def post_(uid):
 		return redirect("/encrypted/{0}".format(uid))
     elif data['oneview']:
 		config.db.pastes.remove({"id":uid})
-    return render_template("post.html",page=page,site=site, data=data)
+    return render_template("post.html",page=page,site=site, data=data, latest=latest)
