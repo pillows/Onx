@@ -71,7 +71,7 @@ h5 {
 .text, .diff, .default { background-color:#474949; } /* Gray */
 .ruby, .erlang { background-color:#d9230f; } /* Red */
 .boo { background-color:#469408 } /* Green */
-.rust { background-color:#d9831f } /* Orange */
+.rust, .html { background-color:#d9831f } /* Orange */
 .cpp, .php .lua, .c { background-color: #029acf; } /* Blue */
 .js  { background-color: #f1c40f; } /* Yellow */
 .bash { background-color: #000000; } /* Black */
