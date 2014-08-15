@@ -4,6 +4,7 @@ import config
 import uuid
 import aes
 import hashlib
+import time
 
 index=Blueprint("index",__name__)
 
@@ -16,7 +17,7 @@ def index_():
 		paste = request.form['paste']
 		expiration = request.form['expiration']
 		encryption = request.form['encryption']
-		oneview = request.form.get("oneview")
+		oneview = False#request.form["oneview"]
 		language = request.form['lang']
 		print language
 		#print oneview
@@ -31,7 +32,11 @@ def index_():
                     oneview = True
                 else:
                     oneview = False
+                if expiration:
+                    expiration = True
+                else:
+                    expiration = False
 
-                config.db.pastes.insert({"paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview, "lang":language, "tag":language})
+                config.db.pastes.insert({"paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview, "lang":language, "tag":language, "expiration":expiration, "time":time.time()})
 		return redirect("/paste/{0}".format(id_))
     return render_template("index.html",page=page, site=site)
