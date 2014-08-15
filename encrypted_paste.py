@@ -2,6 +2,7 @@ from flask import url_for, Blueprint, render_template, redirect, session, flash,
 import config
 import aes
 import base64
+import hashlib
 
 encrypted = Blueprint("encrypted",__name__)
 
@@ -11,9 +12,23 @@ def encrypted_(uid):
     page = "encrypted"
     data = config.db.pastes.find_one({"id":uid})
     #print data['lang']
-    data['paste']=Markup(highlight(data['paste'], get_lexer_by_name(data['lang']), HtmlFormatter(linenos=True)))
     if not data:
         return redirect("/")
-    return render_template("post.html",page=page, data=data,site=site)
+    
+    paste = data['paste']
+
+    if request.method == "POST":
+        password = hashlib.md5(request.form['password']).hexdigest()
+        try:
+            aes.decryptData(password, paste)
+            session[uid] = password
+        except ValueError:
+            flash("Invalid Password.")
+
+    if uid not in session:
+        return render_template("password.html", page=page, site=site)
+    else:
+        data['paste'] = aes.decryptData(session[uid], paste)
+        return render_template("post.html",page=page, data=data,site=site)
 
 
