@@ -11,7 +11,6 @@ def encrypted_(uid):
     site=config.site
     page = "encrypted"
     data = config.db.pastes.find_one({"id":uid})
-    #print data['lang']
     if not data:
         return redirect("/")
     
