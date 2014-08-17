@@ -11,7 +11,12 @@ index=Blueprint("index",__name__)
 @index.route("/",methods=['GET', 'POST'])
 def index_():
     site=config.site
+    hexid=config.hexid
+    serverid=config.serverid
+    edition=config.edition
+
     page="Index"
+    latest = config.db.pastes.find().sort("_id",-1).limit(10)
     if request.method == "POST":
 		title = request.form['title']
 		paste = request.form['paste']
@@ -19,7 +24,7 @@ def index_():
 		encryption = request.form['encryption']
 		oneview = False#request.form["oneview"]
 		language = request.form['lang']
-		print language
+		#print language
 		#print oneview
 		id_ = uuid.uuid4().hex
                 if encryption:
@@ -39,4 +44,4 @@ def index_():
 
                 config.db.pastes.insert({"paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview, "lang":language, "tag":language, "expiration":expiration, "time":time.time()})
 		return redirect("/paste/{0}".format(id_))
-    return render_template("index.html",page=page, site=site)
+    return render_template("index.html",page=page, site=site, hexid=hexid, serverid=serverid, edition=edition latest=latest)

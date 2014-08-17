@@ -275,26 +275,12 @@
 				
 			<div class="col-sm-3">
 				<table class="table-borderless table-condensed table-hover">
+					{% for x in latest %}
 					<tr>
-						<td><span class="label label-default">text</span></td>
-						<td>CC Dump Lulz</td>
+						<td><span class="label {{ x['tag'] }}">{{ x['lang'] }}</span></td>
+						<td><a href="/paste/{{ x['id'] }}">{{ x['title'] }}</a></td>
 					</tr>
-					<tr>
-						<td><span class="label label-primary">ruby</span></td>
-						<td>RoR</td>
-					</tr>
-					<tr>
-						<td><span class="label label-success">boo</span></td>
-						<td>Never heard of this</td>
-					</tr>
-					<tr>
-						<td><span class="label label-danger">rusty</span></td>
-						<td>rusty code</td>
-					</tr>
-					<tr>
-						<td><span class="label label-info">c++</span></td>
-						<td>Random Exe dump</td>
-					</tr>
+					{% endfor %}
 				</table>
 			</div>
 
