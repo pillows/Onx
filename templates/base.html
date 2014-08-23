@@ -43,14 +43,14 @@
             </div>
             <div class="col-sm-5 pull-right">
                 <br><pre>
-Server ID: {{ site['site'] }}
-Edition: <a href="https://github.com/pillows/Onx">{{ site['edition'] }}</a>
-Pastes Made: 0x{{ hexid['hexstr'] }} ({{ hexid['pastes'] }})
+Server ID: {{ site[2] }}
+Edition: <a href="https://github.com/pillows/Onx">{{ site[1] }}</a>
+Pastes Made: {{ hexid[1] }}({{ hexid[0] }})
 <a href="/login">Login</a> | <a href="/register">Register</a>
 </pre>
             </div>
         </div>
-        <h1>{{ site['site'] }} | {{ page }}</h1>
+        <h1>{{ site[0] }} | {{ page }}</h1>
 		
 		{% block content %}
 		{% endblock %}

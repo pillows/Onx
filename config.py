@@ -11,7 +11,7 @@ def getCurrentPastes():
 
 	return currentPastes
 
-
+supported=['php','text','boo','cpp','c','ruby','rust', 'diff', 'erlang', 'lua', 'js', 'bash', 'go']
 site="Onx"
 edition="Stable"
 serverid="US-HTTP-001"

@@ -9,12 +9,11 @@ def post_(uid):
     site=config.details
     hexid=config.getCurrentPastes()
     page="Paste"
-    supported=['php','text','boo','cpp','c','ruby','rust', 'diff', 'erlang', 'lua', 'js', 'bash', 'go']
     data = config.db.pastes.find_one({"id":uid})
     latest = config.db.pastes.find().sort("_id",-1).limit(10)
 
     for x in latest:
-        if latest['lang'] not in supported:
+        if latest['lang'] not in config.supported:
             latest['tag'] = "default"
         else:
             latest['tag'] = latest['lang']
