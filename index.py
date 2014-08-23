@@ -10,11 +10,8 @@ index=Blueprint("index",__name__)
 
 @index.route("/",methods=['GET', 'POST'])
 def index_():
-    site=config.site
-    hexid=config.hexid
-    serverid=config.serverid
-    edition=config.edition
-
+    site=config.details
+    hexid=config.getCurrentPastes()
     page="Index"
     latest = config.db.pastes.find({"display":"public"}).sort("_id",-1).limit(10)
     if request.method == "POST":
@@ -55,4 +52,4 @@ def index_():
         config.db.pastes.insert({"paster":paster, "paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview, "lang":language, "tag":language, "expiration":expiration, "time":time.time(), "display":display})
         return redirect("/paste/{0}".format(id_))
     
-    return render_template("index.html",page=page, site=site, hexid=hexid, serverid=serverid, edition=edition, latest=latest)
+    return render_template("index.html",page=page, site=site, hexid=hexid)

@@ -13,8 +13,11 @@ def getCurrentPastes():
 
 
 site="Onx"
-edition=""
+edition="Stable"
 serverid="US-HTTP-001"
+
+details=[site,edition,serverid]
+
 hexid=getCurrentPastes()
 
 

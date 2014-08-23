@@ -43,14 +43,14 @@
             </div>
             <div class="col-sm-5 pull-right">
                 <br><pre>
-Server ID: fancycat
-Edition: <a href="/web/20140729075445/https://github.com/mrtinkles/fancycat">tuna</a>
-Cat GIFs installed: 0x4841434b
+Server ID: {{ site['site'] }}
+Edition: <a href="https://github.com/pillows/Onx">{{ site['edition'] }}</a>
+Pastes Made: 0x{{ hexid['hexstr'] }} ({{ hexid['pastes'] }})
 <a href="/login">Login</a> | <a href="/register">Register</a>
 </pre>
             </div>
         </div>
-        <h1>{{ site }} | {{ page }}</h1>
+        <h1>{{ site['site'] }} | {{ page }}</h1>
 		
 		{% block content %}
 		{% endblock %}

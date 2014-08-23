@@ -6,11 +6,23 @@ post=Blueprint("post",__name__)
 #Eventually I'm going to have to change this to affect the GET request that should be generated for the AES key.
 @post.route("/paste/<uid>",methods=['GET'])
 def post_(uid):
-    site=config.site
+    site=config.details
+    hexid=config.getCurrentPastes()
     page="Paste"
     supported=['php','text','boo','cpp','c','ruby','rust', 'diff', 'erlang', 'lua', 'js', 'bash', 'go']
     data = config.db.pastes.find_one({"id":uid})
     latest = config.db.pastes.find().sort("_id",-1).limit(10)
+
+    for x in latest:
+        if latest['lang'] not in supported:
+            latest['tag'] = "default"
+        else:
+            latest['tag'] = latest['lang']
+
+    if data['lang'] not in supported:
+		data['tag'] = "default"
+    else:
+		data['tag'] = data['lang']
     
     if not data:
 		return redirect("/")
