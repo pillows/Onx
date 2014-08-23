@@ -11,14 +11,16 @@ def post_(uid):
     page="Paste"
     data = config.db.pastes.find_one({"id":uid})
     latest = config.db.pastes.find().sort("_id",-1).limit(10)
+    
+    latest_ = [_ for _ in latest]
 
-    for x in latest:
+    for latest in latest_:
         if latest['lang'] not in config.supported:
             latest['tag'] = "default"
         else:
             latest['tag'] = latest['lang']
 
-    if data['lang'] not in supported:
+    if data['lang'] not in config.supported:
 		data['tag'] = "default"
     else:
 		data['tag'] = data['lang']
