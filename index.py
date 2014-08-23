@@ -46,7 +46,13 @@ def index_():
 
         if title == "":
             title = "Untitled"
-
-        config.db.pastes.insert({"paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview, "lang":language, "tag":language, "expiration":expiration, "time":time.time(), "display":display})
+        
+        if "login" in session:
+            paster = session['login']
+        else:
+            paster = "Anonymous"
+            
+        config.db.pastes.insert({"paster":paster, "paste":paste, "id":id_, "title":title, "encrypted":encrypted, "password":encryption, "oneview":oneview, "lang":language, "tag":language, "expiration":expiration, "time":time.time(), "display":display})
         return redirect("/paste/{0}".format(id_))
+    
     return render_template("index.html",page=page, site=site, hexid=hexid, serverid=serverid, edition=edition, latest=latest)
